@@ -5,16 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     const track = document.getElementById('carouselTrack');
-    const thumbTrack = document.getElementById('thumbnailTrack');
     const currentNumSpan = document.getElementById('currentNum');
     const progressBar = document.getElementById('progressBar');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    // 1. Generate Slides and Thumbnails
+    // 1. Generate Slides (WebP format)
     for (let i = 1; i <= totalSlides; i++) {
         const slideNumStr = String(i).padStart(3, '0');
-        const imgUrl = `images/extracted_img_${slideNumStr}.png`;
+        const imgUrl = `images/extracted_img_${slideNumStr}.webp`;
 
         // Create Carousel Item
         const item = document.createElement('div');
@@ -28,23 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         item.appendChild(img);
         track.appendChild(item);
-
-        // Create Thumbnail Item
-        const thumb = document.createElement('div');
-        thumb.classList.add('thumb-item');
-        thumb.dataset.index = i - 1;
-        if (i === 1) thumb.classList.add('active');
-
-        const thumbImg = document.createElement('img');
-        thumbImg.src = imgUrl;
-        thumbImg.alt = `썸네일 ${i}`;
-        
-        thumb.appendChild(thumbImg);
-        thumbTrack.appendChild(thumb);
     }
 
     const items = document.querySelectorAll('.carousel-item');
-    const thumbs = document.querySelectorAll('.thumb-item');
 
     // 2. Render 3D Position
     function updateCarousel() {
@@ -97,16 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const progressPercent = ((currentIndex + 1) / totalSlides) * 100;
         progressBar.style.width = `${progressPercent}%`;
 
-        // Update Thumbnails
-        thumbs.forEach((thumb, idx) => {
-            if (idx === currentIndex) {
-                thumb.classList.add('active');
-                // Scroll thumbnail into view smoothly
-                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            } else {
-                thumb.classList.remove('active');
-            }
-        });
+        // Thumbnail update logic removed as per design changes
     }
 
     // 3. Navigation Controls
@@ -168,12 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Bind Thumbnail Click Events
-    thumbs.forEach((thumb, idx) => {
-        thumb.addEventListener('click', () => {
-            goToSlide(idx);
-        });
-    });
+    // Thumbnail click logic removed as per design changes
 
     // 4. Bind Keyboard Events
     document.addEventListener('keydown', (e) => {
