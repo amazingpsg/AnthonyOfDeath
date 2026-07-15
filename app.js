@@ -75,8 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update Counter
+        // Update Counter & Total Slides Count
         currentNumSpan.textContent = String(currentIndex + 1).padStart(2, '0');
+        const totalCountSpan = document.querySelector('.total-count');
+        if (totalCountSpan) {
+            totalCountSpan.textContent = totalSlides;
+        }
 
         // Update Progress Bar
         const progressPercent = ((currentIndex + 1) / totalSlides) * 100;
@@ -172,6 +176,28 @@ document.addEventListener('DOMContentLoaded', () => {
             lastWheelTime = currentTime;
         }
     }, { passive: true });
+
+    // 6. Mobile Swipe Interaction
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // min distance in px
+        if (touchEndX < touchStartX - swipeThreshold) {
+            nextSlide();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+            prevSlide();
+        }
+    }
 
     // Initial render call
     updateCarousel();

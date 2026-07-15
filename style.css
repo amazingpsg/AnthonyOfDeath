@@ -29,6 +29,8 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    touch-action: manipulation;
+    overscroll-behavior: none;
 }
 
 /* Mystical Background Orbs */
@@ -154,6 +156,9 @@ body {
                 box-shadow 0.3s;
     cursor: pointer;
     backface-visibility: hidden;
+    touch-action: pan-y pinch-zoom;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .carousel-item img {
