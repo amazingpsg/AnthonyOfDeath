@@ -1,0 +1,16 @@
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python / IDE cache files
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+# Local backup / scratch files
+extract_images.py
+extract_text.py
+*.bak
+*.tmp

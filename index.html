@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티베트 사자의 서: 6가지 바르도</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Light Orbs for Mystical Atmosphere -->
+    <div class="light-orb orb-1"></div>
+    <div class="light-orb orb-2"></div>
+    <div class="light-orb orb-3"></div>
+
+    <header class="main-header">
+        <div class="logo">
+            <span class="accent">BARDO</span> TRIP
+        </div>
+        <div class="subtitle">의식의 끊어지지 않는 프랙탈 여정</div>
+    </header>
+
+    <main class="viewer-container">
+        <!-- 3D Carousel Stage -->
+        <div class="carousel-stage">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Javascript will populate 20 items here dynamically to keep HTML clean -->
+            </div>
+        </div>
+
+        <!-- Controls & Information -->
+        <div class="carousel-controls">
+            <button class="nav-btn prev-btn" id="prevBtn" aria-label="이전 슬라이드">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            
+            <div class="info-panel">
+                <div class="slide-counter"><span id="currentNum">01</span> <span class="divider">/</span> <span class="total-count">20</span></div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <button class="nav-btn next-btn" id="nextBtn" aria-label="다음 슬라이드">
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+        </div>
+    </main>
+
+    <!-- Bottom Thumbnail Navigation -->
+    <footer class="thumbnail-footer">
+        <div class="thumbnail-track" id="thumbnailTrack">
+            <!-- Populated by JS -->
+        </div>
+    </footer>
+
+    <!-- Interactive Help overlay -->
+    <div class="help-toast">
+        💡 마우스 휠이나 키보드 방향키(←, →)를 사용하여 여정을 이어갈 수 있사옵니다.
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
