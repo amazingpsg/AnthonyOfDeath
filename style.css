@@ -308,4 +308,69 @@ body {
     .carousel-stage {
         height: 350px;
     }
+    .sound-toggle-btn {
+        top: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+    }
 }
+
+/* Sound Toggle Button */
+.sound-toggle-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.sound-toggle-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--text-color);
+    transition: fill 0.3s, transform 0.3s;
+}
+
+.sound-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: scale(1.05);
+}
+
+.sound-toggle-btn:hover svg {
+    fill: var(--accent-color);
+}
+
+.sound-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* Toggle Muted/Playing State */
+.sound-toggle-btn.muted .sound-icon {
+    display: none;
+}
+
+.sound-toggle-btn.muted .mute-icon {
+    display: block;
+}
+
+.sound-toggle-btn:not(.muted) .sound-icon {
+    display: block;
+}
+
+.sound-toggle-btn:not(.muted) .mute-icon {
+    display: none;
+}
+

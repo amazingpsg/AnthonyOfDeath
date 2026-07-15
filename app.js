@@ -199,6 +199,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 7. BGM (Audio) System
+    const bgm = document.getElementById('bgm');
+    const soundToggle = document.getElementById('soundToggle');
+
+    soundToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent triggering other click actions
+        if (bgm.paused) {
+            playBGM();
+        } else {
+            pauseBGM();
+        }
+    });
+
+    function playBGM() {
+        bgm.play().then(() => {
+            soundToggle.classList.remove('muted');
+        }).catch(err => {
+            console.log("Autoplay prevented or audio error:", err);
+        });
+    }
+
+    function pauseBGM() {
+        bgm.pause();
+        soundToggle.classList.add('muted');
+    }
+
+    // Try to auto-start BGM on first user interaction
+    const startAudioOnInteraction = () => {
+        playBGM();
+        document.removeEventListener('click', startAudioOnInteraction);
+        document.removeEventListener('keydown', startAudioOnInteraction);
+        document.removeEventListener('touchstart', startAudioOnInteraction);
+    };
+
+    document.addEventListener('click', startAudioOnInteraction);
+    document.addEventListener('keydown', startAudioOnInteraction);
+    document.addEventListener('touchstart', startAudioOnInteraction);
+
     // Initial render call
     updateCarousel();
 });
