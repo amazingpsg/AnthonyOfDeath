@@ -1,7 +1,7 @@
 // Javascript for Bardo 3D Carousel Viewer
 
 document.addEventListener('DOMContentLoaded', () => {
-    const totalSlides = 20;
+    const totalSlides = 14;
     let currentIndex = 0;
 
     const track = document.getElementById('carouselTrack');
